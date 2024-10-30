@@ -4,12 +4,20 @@
 
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def BejelentkeziKepernyo():
+    print("            ______")
+    print("            _\ _~-\___")
+    print("    =  = ==(____AA____D")
+    print("                \_____\___________________,-~~~~~~~`-.._")
+    print("                /     o O o o o o O O o o o o o o O o  |\_")
+    print("                `~-.__        ___..----..                  )")
+    print("                      `---~~\___________/------------`````")
+    print("                      =  ===(_________D")
+    print("           PARAIZS ATTILA XT121U Repülőjegy Foglalási Rendszer")
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    BejelentkeziKepernyo()
+
 
