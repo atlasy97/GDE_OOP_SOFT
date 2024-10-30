@@ -1,6 +1,17 @@
 from abc import ABC, abstractmethod
 
 class Jarat(ABC):
-    jaratszam: int
-    celallomas: str
-    jegyar: float
+    @property
+    @abstractmethod
+    def jaratszam(self):
+            pass
+
+    @property
+    @abstractmethod
+    def celallomas(self):
+        pass
+
+    @property
+    @abstractmethod
+    def jegyar(self):
+        pass
