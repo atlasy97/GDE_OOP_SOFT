@@ -15,3 +15,8 @@ class Jarat(ABC):
     @abstractmethod
     def jegyar(self):
         pass
+
+    @abstractmethod
+    def kiiratas(self):
+        pass
+

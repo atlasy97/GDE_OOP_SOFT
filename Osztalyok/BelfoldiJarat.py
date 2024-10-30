@@ -1,4 +1,5 @@
-from Jarat import Jarat
+from Osztalyok.Jarat import Jarat
+
 
 class BelfoldiJarat(Jarat):
     def __init__(self, jaratszam, celallomas, jegyar):
