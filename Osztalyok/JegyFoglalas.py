@@ -10,8 +10,6 @@ def ujfoglalas()->int:
     _foglalasszamlalo = foglalasszamlalo_lekeres()+1
     return _foglalasszamlalo
 
-
-
 class Jegyfoglalas:
 
 

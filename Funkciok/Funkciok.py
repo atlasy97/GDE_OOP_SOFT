@@ -12,6 +12,7 @@ def jegyFoglalas(foglalandoJarat:str) -> int :
     sikeres = False
     most = datetime.now()
     foglaloneve:str =""
+    foglalasara:int = 0
     try:
         for legitarsasag in legitarsasagok:
             for ls in legitarsasag.jarat:
@@ -28,6 +29,7 @@ def jegyFoglalas(foglalandoJarat:str) -> int :
                         foglalasok.append(ujfoglalas)
                         pillido = most.strftime("%H:%M:%S")
                         print("Foglalás időpontja =", pillido)
+                        foglalasara= jar.jegyar
                         sikeres = True
                         break
         if sikeres == False:
@@ -38,7 +40,7 @@ def jegyFoglalas(foglalandoJarat:str) -> int :
     except Exception as error:
         print(error)
 
-    return 1
+    return foglalasara
 
 def foglalasLemondasa(lemondado:str, szin) -> bool :
     sikeres = False
@@ -61,12 +63,8 @@ def foglalasokListazasa(szin):
     for foglalas in foglalasok:
         print(szin.Felkover + szin.Kek +str(foglalas.azonosito) +"   "+ str(foglalas.jarat.jaratszam)+ "   "  + foglalas.nev  + szin.Zaras)
 
-
-
-
 legitarsasagok = []
 foglalasok = []
-
 
 def inicializacio():
 
@@ -91,9 +89,7 @@ def inicializacio():
     legitarsasag1.nev = "WizzAir"
     legitarsasag1.jarat = [belfoldijarat1, nemzetkozijarat1, nemzetkozijarat2]
 
-
     legitarsasagok.append(legitarsasag1)
-
 
 
     foglalas1 = Jegyfoglalas()

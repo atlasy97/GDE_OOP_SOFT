@@ -53,11 +53,12 @@ def jegyFoglalasKepernyo():
     while (leutottBillentyu != "0"):
         leutottBillentyu = input()
         if(leutottBillentyu != "0"):
-          jegyFoglalas(leutottBillentyu)
+            jegyar = jegyFoglalas(leutottBillentyu)
+            if(jegyar!=0):
+                print("A jegy ára: "+str(jegyar) +" Ft")
         else:
             kepernyoTisztitas()
             kezdoKepernyo()
-
 
 def lemondasKepernyo():
 
@@ -89,8 +90,6 @@ def lemondasKepernyo():
             kepernyoTisztitas()
             kezdoKepernyo()
 
-
-
 def listazasKepernyo():
     print(szin.Felkover + szin.Kek +r"  __" + szin.Zaras)
     print(szin.Felkover + szin.Kek +r"  \  \     _ _" + szin.Zaras)
@@ -104,7 +103,6 @@ def listazasKepernyo():
         print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
     foglalasokListazasa(szin())
     print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
-
 
 def hibaKepernyo(kepernyo: int):
     if(kepernyo == 0):
@@ -121,6 +119,7 @@ def hibaKepernyo(kepernyo: int):
 #KIEGÉSZÍTŐ FUNKCIÓK, OSZTÁLYOK, VÁLTOZÓK
 
 kepernyo: int = 0
+
 def bemenetFeldolgozas():
     valasztottFunckio = input()
     try:

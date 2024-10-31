@@ -1,6 +1,5 @@
 from Osztalyok.Jarat import Jarat
 
-
 class BelfoldiJarat(Jarat):
     def __init__(self):
         self._jaratszam = 0
