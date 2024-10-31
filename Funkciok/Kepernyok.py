@@ -1,6 +1,7 @@
 #KÉPERNYŐK
-from Funkciok.Funkciok import jegyFoglalas, legitarsasagok, legitarsasagok, foglalasok
+from Funkciok.Funkciok import jegyFoglalas, legitarsasagok, legitarsasagok, foglalasok, foglalasLemondasa
 from Osztalyok.BelfoldiJarat import BelfoldiJarat
+from Osztalyok.LegiTarsasag import Legitarsasag
 from Osztalyok.NemzetkoziJarat import NemzetkoziJarat
 
 
@@ -27,7 +28,8 @@ def jegyFoglalasKepernyo():
     print(szin.Felkover + szin.Turkiz +r"        -==/ /"+ szin.Zaras)
     print(szin.Felkover + szin.Turkiz +r"          '-'"+ szin.Zaras)
     print(szin.Felkover + szin.Turkiz + szin.Alahuzas + "      JEGY FOGLALÁSA      " + szin.Zaras)
-
+    if(len(legitarsasagok)==0):
+        print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ JÁRATOK!" + szin.Zaras)
     print(szin.Fekete + szin.PirosHatter+"Belfö" + szin.Zaras + szin.Fekete +  szin.FeherHatter + "ldi já" + szin.Zaras + szin.ZoldHatter +szin.Fekete +  "ratok:" + szin.Zaras)
 
     for legitarsasag in legitarsasagok:
@@ -57,10 +59,34 @@ def jegyFoglalasKepernyo():
 
 
 def lemondasKepernyo():
+
+
     print(szin.Felkover + szin.Sarga +r"       __|__" + szin.Zaras)
     print(szin.Felkover + szin.Sarga +r"--o--o--(_)--o--o--" + szin.Zaras)
     print(szin.Felkover + szin.Sarga + szin.Alahuzas + " FOGLALÁS LEMONDÁSA " + szin.Zaras)
-    print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
+    if(len(foglalasok)==0):
+        print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
+
+    for foglalas in foglalasok:
+        print(szin.Felkover + szin.Sarga +"ID:" + str(foglalas.azonosito) + " - "  + szin.Zaras + foglalas.jarat.jaratszam + " ||| "  , end="", flush=True)
+    print("\n\rAdja meg a törölni kívánt foglalás"+szin.Felkover + szin.Sarga+" ID-ját" + szin.Zaras + " vagy üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
+    leutottBillentyu = "x"
+    while (leutottBillentyu != "0"):
+        leutottBillentyu = input()
+        if(leutottBillentyu != "0"):
+          if foglalasLemondasa(leutottBillentyu) == True:
+
+              if (len(foglalasok) == 0):
+                  print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
+              else:
+                  print("Maradék foglalások:")
+
+              for foglalas in foglalasok:
+                  print(szin.Felkover + szin.Sarga + "ID:" + str(
+                      foglalas.azonosito) + " - " + szin.Zaras + foglalas.jarat.jaratszam + " ||| ", end="", flush=True)
+        else:
+            kepernyoTisztitas()
+            kezdoKepernyo()
 
 
 
@@ -73,7 +99,8 @@ def listazasKepernyo():
     print(szin.Felkover + szin.Kek +r"      \__\ " + szin.Zaras)
     print(szin.Felkover + szin.Kek +r"PILLANATNYI FOGLALÁSOK LISTÁJA" + szin.Zaras)
     print(szin.Felkover + szin.Kek +r"ID---JÁRAT---FOGLALÓ NEVE"  + szin.Zaras)
-
+    if(len(foglalasok)==0):
+        print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
     for foglalas in foglalasok:
         print(szin.Felkover + szin.Kek +str(foglalas.azonosito) +"   "+ str(foglalas.jarat.jaratszam)+ "   "  + foglalas.nev  + szin.Zaras)
 
