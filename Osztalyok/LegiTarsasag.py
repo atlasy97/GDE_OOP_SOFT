@@ -2,7 +2,7 @@ class Legitarsasag:
     def __init__(self):
         self._azonosito = 0
         self._nev = ""
-        self._jarat = ""
+        self._jarat = []
 
     @property
     def azonosito(self):
@@ -26,5 +26,5 @@ class Legitarsasag:
 
     @jarat.setter
     def jarat(self, jarat):
-        self._jarat = jarat
+        self._jarat.append(jarat)
 

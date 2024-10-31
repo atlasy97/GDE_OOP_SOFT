@@ -1,6 +1,6 @@
-# AUTHOR: ATTILA PARAIZS
-# NEPTUN CODE: XT121U
-# 2024
+# Név: Paraizs Attila
+# Neptunkód: XT121U
+# 2024.10.31
 
 import Funkciok.Funkciok
 import Funkciok.Kepernyok

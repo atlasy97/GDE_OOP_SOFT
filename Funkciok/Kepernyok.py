@@ -1,5 +1,7 @@
 #KÉPERNYŐK
+from Funkciok.Funkciok import jegyFoglalas, legitarsasagok, legitarsasagok, foglalasok
 from Osztalyok.BelfoldiJarat import BelfoldiJarat
+from Osztalyok.NemzetkoziJarat import NemzetkoziJarat
 
 
 def kezdoKepernyo():
@@ -26,9 +28,32 @@ def jegyFoglalasKepernyo():
     print(szin.Felkover + szin.Turkiz +r"          '-'"+ szin.Zaras)
     print(szin.Felkover + szin.Turkiz + szin.Alahuzas + "      JEGY FOGLALÁSA      " + szin.Zaras)
 
+    print(szin.Fekete + szin.PirosHatter+"Belfö" + szin.Zaras + szin.Fekete +  szin.FeherHatter + "ldi já" + szin.Zaras + szin.ZoldHatter +szin.Fekete +  "ratok:" + szin.Zaras)
 
-    print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
+    for legitarsasag in legitarsasagok:
+        for bjar in legitarsasag.jarat:
+            for jar in bjar:
+                if type(jar) is BelfoldiJarat:
+                    print("|Járatazonosító: ",jar.jaratszam,"| Légitársaság: ", legitarsasag.nev , "| Célállomás: ", jar.celallomas , "| Jegyár: ",jar.jegyar,"Ft |")
 
+    print(szin.Fekete +szin.SargaHatter +"Nemzetközi járatok:" + szin.Zaras)
+
+    for legitarsasag in legitarsasagok:
+        for kjar in legitarsasag.jarat:
+            for jar in kjar:
+                if type(jar) is NemzetkoziJarat:
+                    print("|Járatazonosító: ", jar.jaratszam, "| Légitársaság: ", legitarsasag.nev, "| Célállomás: ", jar.celallomas, "| Jegyár: ", jar.jegyar, "Ft |")
+
+    print("Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez, vagy a járatszámot a foglaláshoz")
+
+    leutottBillentyu = "x"
+    while (leutottBillentyu != "0"):
+        leutottBillentyu = input()
+        if(leutottBillentyu != "0"):
+          jegyFoglalas(leutottBillentyu)
+        else:
+            kepernyoTisztitas()
+            kezdoKepernyo()
 
 
 def lemondasKepernyo():
@@ -40,19 +65,18 @@ def lemondasKepernyo():
 
 
 def listazasKepernyo():
-    print(szin.Felkover + szin.Kek +r"                  / \ " + "                     PILLANATNYI FOGLALÁSOK LISTÁJA" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                 |^^|" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                 |{}|" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"  _______________/~~\________________" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r" /               |  |                \ " + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"`========--------.  .---------========'" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                 ||||" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                  ||" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                  ||" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                  ||" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"                  ||" + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"              ,---||---," + "" + szin.Zaras)
-    print(szin.Felkover + szin.Kek +r"              '---<>---'" + "" + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"  __" + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"  \  \     _ _" + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"   \**\ ___\/ \ " + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"X*#####*+^^ \_ \ " + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"   o/\  \ " + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"      \__\ " + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"PILLANATNYI FOGLALÁSOK LISTÁJA" + szin.Zaras)
+    print(szin.Felkover + szin.Kek +r"ID---JÁRAT---FOGLALÓ NEVE"  + szin.Zaras)
+
+    for foglalas in foglalasok:
+        print(szin.Felkover + szin.Kek +str(foglalas.azonosito) +"   "+ str(foglalas.jarat.jaratszam)+ "   "  + foglalas.nev  + szin.Zaras)
+
     print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
 
 
@@ -96,11 +120,24 @@ def kepernyoTisztitas():
     print(tolas)
 
 class szin:
+    Fekete = '\33[30m'
+    FeherHatter ='\33[107m'
     Kek = '\033[94m'
     Turkiz = '\033[96m'
     Zold = '\033[92m'
+    ZoldHatter = '\33[42m'
     Sarga = '\033[93m'
+    SargaHatter = '\33[43m'
     Piros = '\033[91m'
+    PirosHatter ='\33[41m'
     Felkover = '\033[1m'
     Alahuzas = '\033[4m'
     Zaras = '\033[0m'
+
+def megjelenitesiNevLekerese(nev:str) ->str:
+    if nev== "_jaratszam":
+        return  "Járatszám:"
+    elif nev== "_celallomas":
+        return "Célállomás:"
+    elif nev== "_jegyar":
+        return  "Jegyár:"
