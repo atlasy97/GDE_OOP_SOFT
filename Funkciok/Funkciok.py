@@ -10,25 +10,27 @@ def jegyFoglalas(foglalandoJarat:str) -> bool :
 
     return sikeres
 
-def foglalasLemondasa(lemondado:str) -> bool :
+def foglalasLemondasa(lemondado:str, szin) -> bool :
     sikeres = False
 
     try:
         id = int(lemondado)
         for elem in foglalasok:
             if elem.azonosito == id:
-                print('\033[92m' + '\033[4m' + "FOGLALÁS SIKERESEN TÖRÖLVE:"  + '\033[0m' + "| ID:" + str(elem.azonosito)+ " | NÉV: " + str(elem.nev) + " | JÁRATSZÁM:" + str(elem.jarat.jaratszam))
+                print(szin.Alahuzas + szin.Zold + "FOGLALÁS SIKERESEN TÖRÖLVE:"  + szin.Zaras + "| ID:" + str(elem.azonosito)+ " | NÉV: " + str(elem.nev) + " | JÁRATSZÁM:" + str(elem.jarat.jaratszam))
                 foglalasok.remove(elem)
                 sikeres = True
                 break
         if sikeres == False:
-            print('\033[93m'+"NINCS ILYEN ID, ÍGY NEM LETT FOGLALÁS LEMONDVA" + '\033[0m')
+            print(szin.Sarga+"NINCS ILYEN ID, ÍGY NEM LETT FOGLALÁS LEMONDVA" + szin.Zaras)
     except:
         print("Ez nem egy egészszám, az ID csak egész szám lehet")
     return sikeres
 
-def foglalasokListazasa():
-    pass
+def foglalasokListazasa(szin):
+    for foglalas in foglalasok:
+        print(szin.Felkover + szin.Kek +str(foglalas.azonosito) +"   "+ str(foglalas.jarat.jaratszam)+ "   "  + foglalas.nev  + szin.Zaras)
+
 
 
 

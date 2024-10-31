@@ -1,5 +1,6 @@
 #KÉPERNYŐK
-from Funkciok.Funkciok import jegyFoglalas, legitarsasagok, legitarsasagok, foglalasok, foglalasLemondasa
+from Funkciok.Funkciok import jegyFoglalas, legitarsasagok, legitarsasagok, foglalasok, foglalasLemondasa, \
+    foglalasokListazasa
 from Osztalyok.BelfoldiJarat import BelfoldiJarat
 from Osztalyok.LegiTarsasag import Legitarsasag
 from Osztalyok.NemzetkoziJarat import NemzetkoziJarat
@@ -74,7 +75,7 @@ def lemondasKepernyo():
     while (leutottBillentyu != "0"):
         leutottBillentyu = input()
         if(leutottBillentyu != "0"):
-          if foglalasLemondasa(leutottBillentyu) == True:
+          if foglalasLemondasa(leutottBillentyu,szin()) == True:
 
               if (len(foglalasok) == 0):
                   print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
@@ -101,8 +102,8 @@ def listazasKepernyo():
     print(szin.Felkover + szin.Kek +r"ID---JÁRAT---FOGLALÓ NEVE"  + szin.Zaras)
     if(len(foglalasok)==0):
         print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
-    for foglalas in foglalasok:
-        print(szin.Felkover + szin.Kek +str(foglalas.azonosito) +"   "+ str(foglalas.jarat.jaratszam)+ "   "  + foglalas.nev  + szin.Zaras)
+    foglalasokListazasa(szin())
+
 
     print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
 
