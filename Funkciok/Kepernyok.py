@@ -37,7 +37,7 @@ def jegyFoglalasKepernyo():
         for bjar in legitarsasag.jarat:
             for jar in bjar:
                 if type(jar) is BelfoldiJarat:
-                    print("|Járatazonosító: ",jar.jaratszam,"| Légitársaság: ", legitarsasag.nev , "| Célállomás: ", jar.celallomas , "| Jegyár: ",jar.jegyar,"Ft |")
+                    print("|Járatszám: ",jar.jaratszam,"| Légitársaság: ", legitarsasag.nev , "| Célállomás: ", jar.celallomas , "| Jegyár: ",jar.jegyar,"Ft |")
 
     print(szin.Fekete +szin.SargaHatter +"Nemzetközi járatok:" + szin.Zaras)
 
@@ -45,7 +45,7 @@ def jegyFoglalasKepernyo():
         for kjar in legitarsasag.jarat:
             for jar in kjar:
                 if type(jar) is NemzetkoziJarat:
-                    print("|Járatazonosító: ", jar.jaratszam, "| Légitársaság: ", legitarsasag.nev, "| Célállomás: ", jar.celallomas, "| Jegyár: ", jar.jegyar, "Ft |")
+                    print("|Járatszám: ", jar.jaratszam, "| Légitársaság: ", legitarsasag.nev, "| Célállomás: ", jar.celallomas, "| Jegyár: ", jar.jegyar, "Ft |")
 
     print("Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez, vagy a járatszámot a foglaláshoz")
 
@@ -103,8 +103,6 @@ def listazasKepernyo():
     if(len(foglalasok)==0):
         print(szin.Felkover + szin.Piros + r"NINCSENEK ELÉRHETŐ FOGLALÁSOK ELŐSZÖR FOGLALJON!" + szin.Zaras)
     foglalasokListazasa(szin())
-
-
     print(r"Üssön 0-t (nulla) a kezdőképernyőhöz történő visszatéréshez")
 
 
@@ -117,8 +115,7 @@ def hibaKepernyo(kepernyo: int):
         lemondasKepernyo()
     elif(kepernyo == 3):
         listazasKepernyo()
-    print(
-        szin.Alahuzas + szin.Turkiz + "-|- 1) Jegy foglalása -|-" + szin.Zaras + "   " + szin.Alahuzas + szin.Sarga + " -|- 2) Foglalás lemondása -|-" + szin.Zaras + "   " + szin.Alahuzas + szin.Kek + "-|- 3) foglalások listázása -|-" + szin.Zaras)
+    print(szin.Alahuzas + szin.Turkiz + "-|- 1) Jegy foglalása -|-" + szin.Zaras + "   " + szin.Alahuzas + szin.Sarga + " -|- 2) Foglalás lemondása -|-" + szin.Zaras + "   " + szin.Alahuzas + szin.Kek + "-|- 3) foglalások listázása -|-" + szin.Zaras)
     print(szin.Felkover + szin.Piros +"A beadott érték nem értelmezhető kérem csak a megadottak közül válasszon" + szin.Zaras)
 
 #KIEGÉSZÍTŐ FUNKCIÓK, OSZTÁLYOK, VÁLTOZÓK
@@ -161,11 +158,3 @@ class szin:
     Felkover = '\033[1m'
     Alahuzas = '\033[4m'
     Zaras = '\033[0m'
-
-def megjelenitesiNevLekerese(nev:str) ->str:
-    if nev== "_jaratszam":
-        return  "Járatszám:"
-    elif nev== "_celallomas":
-        return "Célállomás:"
-    elif nev== "_jegyar":
-        return  "Jegyár:"
